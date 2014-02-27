@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore">
+  <TalendMetadata:DatabaseConnection xmi:id="_F5N48J2IEeKCJJp4aqB8Gw" name="test" label="test" dataPackage="_F7fw4J2IEeKCJJp4aqB8Gw" DatabaseType="PostgreSQL" DriverClass="org.postgresql.Driver" URL="jdbc:postgresql://localhost:5432/sola" Port="5432" Username="postgres" Password="zwJeFustw3X2tGowwpC4cA==" ServerName="localhost" SID="sola" SqlSynthax="SQL Syntax" DbmsId="postgres_id" ProductId="POSTGRESQL" StandardSQL="true" UiSchema="public">
+    <taggedValue xmi:id="_F5dJgJ2IEeKCJJp4aqB8Gw" tag="Is Conn Need Reload" value="false"/>
+    <taggedValue xmi:id="_F6E0kJ2IEeKCJJp4aqB8Gw" tag="package filter" value=""/>
+    <taggedValue xmi:id="_F7NdAJ2IEeKCJJp4aqB8Gw" tag="Status" value=""/>
+    <taggedValue xmi:id="_F7NdAZ2IEeKCJJp4aqB8Gw" tag="Version" value="0.1"/>
+    <taggedValue xmi:id="_F7NdAp2IEeKCJJp4aqB8Gw" tag="Purpose" value=""/>
+    <taggedValue xmi:id="_F7NdA52IEeKCJJp4aqB8Gw" tag="Description" value=""/>
+    <taggedValue xmi:id="_F7NdBJ2IEeKCJJp4aqB8Gw" tag="Author" value=""/>
+    <taggedValue xmi:id="_F7NdBZ2IEeKCJJp4aqB8Gw" tag="otherParameter" value=""/>
+    <taggedValue xmi:id="_F7NdBp2IEeKCJJp4aqB8Gw" tag="DB ProductName" value="PostgreSQL"/>
+    <taggedValue xmi:id="_F7NdB52IEeKCJJp4aqB8Gw" tag="DB ProductVersion" value="9.2.3"/>
+    <taggedValue xmi:id="_F7NdCJ2IEeKCJJp4aqB8Gw" tag="DB IdentifierQuoteString" value="&quot;"/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog xmi:id="_F7fw4J2IEeKCJJp4aqB8Gw" name="sola" dataManager="_F5N48J2IEeKCJJp4aqB8Gw">
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_F7fw4Z2IEeKCJJp4aqB8Gw" name="public"/>
+  </orgomg.cwm.resource.relational:Catalog>
+</xmi:XMI>

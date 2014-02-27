@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010">
+  <TalendMetadata:GenericSchemaConnection xmi:id="_v0CmAJ2REeKCJJp4aqB8Gw" comment="connectionComment" label="connectionLabel" dataPackage="_v0DNEJ2REeKCJJp4aqB8Gw" mappingTypeUsed="true" mappingTypeId="postgres_id"/>
+  <TalendMetadata:GenericPackage xmi:id="_v0DNEJ2REeKCJJp4aqB8Gw" dataManager="_v0CmAJ2REeKCJJp4aqB8Gw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_v0DNEZ2REeKCJJp4aqB8Gw" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_v0DNEp2REeKCJJp4aqB8Gw" name="sur_id" id="520" label="sur_id" sourceType="INT4" talendType="id_Integer" key="true">
+        <initialValue xmi:id="_v0DNE52REeKCJJp4aqB8Gw"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_v0DNFJ2REeKCJJp4aqB8Gw" name="land_holder_firstname" id="521" label="land_holder_firstname" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_v0DNFZ2REeKCJJp4aqB8Gw"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_v0DNFp2REeKCJJp4aqB8Gw" name="land_holder_lastname" id="522" label="land_holder_lastname" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_v0DNF52REeKCJJp4aqB8Gw"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_v0DNGJ2REeKCJJp4aqB8Gw" name="api_type" id="523" label="api_type" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_v0DNGZ2REeKCJJp4aqB8Gw"/>
+      </feature>
+    </ownedElement>
+  </TalendMetadata:GenericPackage>
+</xmi:XMI>

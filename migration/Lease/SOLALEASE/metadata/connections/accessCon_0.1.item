@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TalendMetadata:DatabaseConnection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmi:id="_ROo_cJ2QEeKCJJp4aqB8Gw" name="accessCon" label="accessCon" DatabaseType="Access" DriverClass="sun.jdbc.odbc.JdbcOdbcDriver" URL="jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=c:/users/admin/desktop/surrender.mdb" dbVersionString="Access_2003" Port="" Username="" Password="" ServerName="" DatasourceName="" FileFieldName="C:/Users/Admin/Desktop/surrender.mdb" SID="" SqlSynthax="SQL Syntax" DbmsId="access_id" ProductId="ACCESS" AdditionalParams="" StandardSQL="true" SQLMode="false" UiSchema="">
+  <taggedValue xmi:id="_ROo_cZ2QEeKCJJp4aqB8Gw" tag="Is Conn Need Reload" value="true"/>
+</TalendMetadata:DatabaseConnection>
