@@ -179,6 +179,11 @@ INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversi
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('DashbrdViewUnassign', 'hod-id', '2069412a-9eb4-11e3-b6fc-b3a55e1e336f', 1, 'i', 'db:postgres', '2014-02-26 20:03:42.63');
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('hodReview', 'hod-id', '20698f54-9eb4-11e3-b61d-7f495fa94158', 1, 'i', 'db:postgres', '2014-02-26 20:03:42.633');
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewProtectedFields', 'protected-id', '206b8b24-9eb4-11e3-a4d2-efb7e535751d', 1, 'i', 'db:postgres', '2014-02-26 20:03:42.645');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'admin-id', 'e28c8b2a-a249-11e3-9b42-b75eb718f7ba', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'read-only-id', 'e28e5fea-a249-11e3-8902-579ef26d6ead', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'registration-id', 'e28e86fa-a249-11e3-9651-437e724d9088', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'team-leader-id', 'e28eae0a-a249-11e3-91da-ab6a1bace78b', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'hod-id', 'e28ed51a-a249-11e3-90f2-fbb858157c73', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
 
 
 ALTER TABLE approle_appgroup ENABLE TRIGGER ALL;

@@ -5642,7 +5642,7 @@ CREATE TABLE application (
     CONSTRAINT application_check_assigned CHECK ((((assignee_id IS NULL) AND (assigned_datetime IS NULL)) OR ((assignee_id IS NOT NULL) AND (assigned_datetime IS NOT NULL)))),
     CONSTRAINT enforce_dims_location CHECK ((public.st_ndims(location) = 2)),
     CONSTRAINT enforce_geotype_location CHECK (((public.geometrytype(location) = 'MULTIPOINT'::text) OR (location IS NULL))),
-    CONSTRAINT enforce_srid_location CHECK ((public.st_srid(location) = 2193)),
+    CONSTRAINT enforce_srid_location CHECK ((public.st_srid(location) = 999)),
     CONSTRAINT enforce_valid_location CHECK (public.st_isvalid(location))
 );
 
@@ -5908,7 +5908,7 @@ CREATE TABLE application_historic (
     item_number character varying(40),
     CONSTRAINT enforce_dims_location CHECK ((public.st_ndims(location) = 2)),
     CONSTRAINT enforce_geotype_location CHECK (((public.geometrytype(location) = 'MULTIPOINT'::text) OR (location IS NULL))),
-    CONSTRAINT enforce_srid_location CHECK ((public.st_srid(location) = 2193)),
+    CONSTRAINT enforce_srid_location CHECK ((public.st_srid(location) = 999)),
     CONSTRAINT enforce_valid_location CHECK (public.st_isvalid(location))
 );
 
@@ -7572,7 +7572,7 @@ CREATE TABLE cadastre_object (
     change_time timestamp without time zone DEFAULT now() NOT NULL,
     CONSTRAINT enforce_dims_geom_polygon CHECK ((public.st_ndims(geom_polygon) = 2)),
     CONSTRAINT enforce_geotype_geom_polygon CHECK (((public.geometrytype(geom_polygon) = 'POLYGON'::text) OR (geom_polygon IS NULL))),
-    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 2193)),
+    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 999)),
     CONSTRAINT enforce_valid_geom_polygon CHECK (public.st_isvalid(geom_polygon))
 );
 
@@ -7731,7 +7731,7 @@ CREATE TABLE cadastre_object_historic (
     change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL,
     CONSTRAINT enforce_dims_geom_polygon CHECK ((public.st_ndims(geom_polygon) = 2)),
     CONSTRAINT enforce_geotype_geom_polygon CHECK (((public.geometrytype(geom_polygon) = 'POLYGON'::text) OR (geom_polygon IS NULL))),
-    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 2193)),
+    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 999)),
     CONSTRAINT enforce_valid_geom_polygon CHECK (public.st_isvalid(geom_polygon))
 );
 
@@ -7753,7 +7753,7 @@ CREATE TABLE cadastre_object_node_target (
     change_time timestamp without time zone DEFAULT now() NOT NULL,
     CONSTRAINT enforce_dims_geom CHECK ((public.st_ndims(geom) = 2)),
     CONSTRAINT enforce_geotype_geom CHECK (((public.geometrytype(geom) = 'POINT'::text) OR (geom IS NULL))),
-    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 2193)),
+    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 999)),
     CONSTRAINT enforce_valid_geom CHECK (public.st_isvalid(geom))
 );
 
@@ -7840,7 +7840,7 @@ CREATE TABLE cadastre_object_node_target_historic (
     change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL,
     CONSTRAINT enforce_dims_geom CHECK ((public.st_ndims(geom) = 2)),
     CONSTRAINT enforce_geotype_geom CHECK (((public.geometrytype(geom) = 'POINT'::text) OR (geom IS NULL))),
-    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 2193)),
+    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 999)),
     CONSTRAINT enforce_valid_geom CHECK (public.st_isvalid(geom))
 );
 
@@ -7862,7 +7862,7 @@ CREATE TABLE cadastre_object_target (
     change_time timestamp without time zone DEFAULT now() NOT NULL,
     CONSTRAINT enforce_dims_geom_polygon CHECK ((public.st_ndims(geom_polygon) = 2)),
     CONSTRAINT enforce_geotype_geom_polygon CHECK (((public.geometrytype(geom_polygon) = 'POLYGON'::text) OR (geom_polygon IS NULL))),
-    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 2193)),
+    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 999)),
     CONSTRAINT enforce_valid_geom_polygon CHECK (public.st_isvalid(geom_polygon))
 );
 
@@ -7949,7 +7949,7 @@ CREATE TABLE cadastre_object_target_historic (
     change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL,
     CONSTRAINT enforce_dims_geom_polygon CHECK ((public.st_ndims(geom_polygon) = 2)),
     CONSTRAINT enforce_geotype_geom_polygon CHECK (((public.geometrytype(geom_polygon) = 'POLYGON'::text) OR (geom_polygon IS NULL))),
-    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 2193)),
+    CONSTRAINT enforce_srid_geom_polygon CHECK ((public.st_srid(geom_polygon) = 999)),
     CONSTRAINT enforce_valid_geom_polygon CHECK (public.st_isvalid(geom_polygon))
 );
 
@@ -8485,8 +8485,8 @@ CREATE TABLE spatial_unit (
     CONSTRAINT enforce_dims_geom CHECK ((public.st_ndims(geom) = 2)),
     CONSTRAINT enforce_dims_reference_point CHECK ((public.st_ndims(reference_point) = 2)),
     CONSTRAINT enforce_geotype_reference_point CHECK (((public.geometrytype(reference_point) = 'POINT'::text) OR (reference_point IS NULL))),
-    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 2193)),
-    CONSTRAINT enforce_srid_reference_point CHECK ((public.st_srid(reference_point) = 2193)),
+    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 999)),
+    CONSTRAINT enforce_srid_reference_point CHECK ((public.st_srid(reference_point) = 999)),
     CONSTRAINT enforce_valid_geom CHECK (public.st_isvalid(geom)),
     CONSTRAINT enforce_valid_reference_point CHECK (public.st_isvalid(reference_point))
 );
@@ -8963,8 +8963,8 @@ CREATE TABLE spatial_unit_historic (
     CONSTRAINT enforce_dims_geom CHECK ((public.st_ndims(geom) = 2)),
     CONSTRAINT enforce_dims_reference_point CHECK ((public.st_ndims(reference_point) = 2)),
     CONSTRAINT enforce_geotype_reference_point CHECK (((public.geometrytype(reference_point) = 'POINT'::text) OR (reference_point IS NULL))),
-    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 2193)),
-    CONSTRAINT enforce_srid_reference_point CHECK ((public.st_srid(reference_point) = 2193)),
+    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 999)),
+    CONSTRAINT enforce_srid_reference_point CHECK ((public.st_srid(reference_point) = 999)),
     CONSTRAINT enforce_valid_geom CHECK (public.st_isvalid(geom)),
     CONSTRAINT enforce_valid_reference_point CHECK (public.st_isvalid(reference_point))
 );
@@ -9304,8 +9304,8 @@ CREATE TABLE survey_point (
     CONSTRAINT enforce_dims_original_geom CHECK ((public.st_ndims(original_geom) = 2)),
     CONSTRAINT enforce_geotype_geom CHECK (((public.geometrytype(geom) = 'POINT'::text) OR (geom IS NULL))),
     CONSTRAINT enforce_geotype_original_geom CHECK (((public.geometrytype(original_geom) = 'POINT'::text) OR (original_geom IS NULL))),
-    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 2193)),
-    CONSTRAINT enforce_srid_original_geom CHECK ((public.st_srid(original_geom) = 2193)),
+    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 999)),
+    CONSTRAINT enforce_srid_original_geom CHECK ((public.st_srid(original_geom) = 999)),
     CONSTRAINT enforce_valid_geom CHECK (public.st_isvalid(geom)),
     CONSTRAINT enforce_valid_original_geom CHECK (public.st_isvalid(original_geom))
 );
@@ -9419,8 +9419,8 @@ CREATE TABLE survey_point_historic (
     CONSTRAINT enforce_dims_original_geom CHECK ((public.st_ndims(original_geom) = 2)),
     CONSTRAINT enforce_geotype_geom CHECK (((public.geometrytype(geom) = 'POINT'::text) OR (geom IS NULL))),
     CONSTRAINT enforce_geotype_original_geom CHECK (((public.geometrytype(original_geom) = 'POINT'::text) OR (original_geom IS NULL))),
-    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 2193)),
-    CONSTRAINT enforce_srid_original_geom CHECK ((public.st_srid(original_geom) = 2193)),
+    CONSTRAINT enforce_srid_geom CHECK ((public.st_srid(geom) = 999)),
+    CONSTRAINT enforce_srid_original_geom CHECK ((public.st_srid(original_geom) = 999)),
     CONSTRAINT enforce_valid_geom CHECK (public.st_isvalid(geom)),
     CONSTRAINT enforce_valid_original_geom CHECK (public.st_isvalid(original_geom))
 );
@@ -11703,7 +11703,7 @@ COMMENT ON VIEW user_roles IS 'Determines the application security roles assigne
 --
 
 CREATE VIEW user_pword_expiry AS
-    WITH pw_change_all AS (SELECT u.username, u.change_time, u.change_user, u.rowversion FROM appuser u WHERE (NOT (EXISTS (SELECT uh2.id FROM appuser_historic uh2 WHERE ((((uh2.username)::text = (u.username)::text) AND (uh2.rowversion = (u.rowversion - 1))) AND ((uh2.passwd)::text = (u.passwd)::text))))) UNION SELECT uh.username, uh.change_time, uh.change_user, uh.rowversion FROM appuser_historic uh WHERE (NOT (EXISTS (SELECT uh2.id FROM appuser_historic uh2 WHERE ((((uh2.username)::text = (uh.username)::text) AND (uh2.rowversion = (uh.rowversion - 1))) AND ((uh2.passwd)::text = (uh.passwd)::text)))))), pw_change AS (SELECT pall.username AS uname, pall.change_time AS last_pword_change, pall.change_user AS pword_change_user FROM pw_change_all pall WHERE (pall.rowversion = (SELECT max(p2.rowversion) AS max FROM pw_change_all p2 WHERE ((p2.username)::text = (pall.username)::text)))) SELECT p.uname, p.last_pword_change, p.pword_change_user, CASE WHEN (EXISTS (SELECT r.username FROM user_roles r WHERE (((r.username)::text = (p.uname)::text) AND ((r.rolename)::text = ANY ((ARRAY['ManageSecurity'::character varying, 'NoPasswordExpiry'::character varying])::text[]))))) THEN true ELSE false END AS no_pword_expiry, CASE WHEN (s.vl IS NULL) THEN NULL::integer ELSE (((p.last_pword_change)::date - (now())::date) + (s.vl)::integer) END AS pword_expiry_days FROM (pw_change p LEFT JOIN setting s ON ((((s.name)::text = 'pword-expiry-days'::text) AND s.active)));
+    WITH pw_change_all AS (SELECT u.username, u.change_time, u.change_user, u.rowversion FROM appuser u WHERE (NOT (EXISTS (SELECT uh2.id FROM appuser_historic uh2 WHERE ((((uh2.username)::text = (u.username)::text) AND (uh2.rowversion = (u.rowversion - 1))) AND ((uh2.passwd)::text = (u.passwd)::text))))) UNION SELECT uh.username, uh.change_time, uh.change_user, uh.rowversion FROM appuser_historic uh WHERE (NOT (EXISTS (SELECT uh2.id FROM appuser_historic uh2 WHERE ((((uh2.username)::text = (uh.username)::text) AND (uh2.rowversion = (uh.rowversion - 1))) AND ((uh2.passwd)::text = (uh.passwd)::text)))))), pw_change AS (SELECT pall.username AS uname, pall.change_time AS last_pword_change, pall.change_user AS pword_change_user FROM pw_change_all pall WHERE (pall.rowversion = (SELECT max(p2.rowversion) AS max FROM pw_change_all p2 WHERE ((p2.username)::text = (pall.username)::text)))) SELECT p.uname, p.last_pword_change, p.pword_change_user, CASE WHEN (EXISTS (SELECT r.username FROM user_roles r WHERE (((r.username)::text = (p.uname)::text) AND ((r.rolename)::text = ANY (ARRAY[('ManageSecurity'::character varying)::text, ('NoPasswordExpiry'::character varying)::text]))))) THEN true ELSE false END AS no_pword_expiry, CASE WHEN (s.vl IS NULL) THEN NULL::integer ELSE (((p.last_pword_change)::date - (now())::date) + (s.vl)::integer) END AS pword_expiry_days FROM (pw_change p LEFT JOIN setting s ON ((((s.name)::text = 'pword-expiry-days'::text) AND s.active)));
 
 
 ALTER TABLE system.user_pword_expiry OWNER TO postgres;
@@ -12059,7 +12059,7 @@ CREATE TABLE br_validation (
     severity_code character varying(20) NOT NULL,
     order_of_execution integer DEFAULT 0 NOT NULL,
     CONSTRAINT br_validation_application_moment_valid CHECK ((((target_code)::text <> 'application'::text) OR ((((target_code)::text = 'application'::text) AND (target_service_moment IS NULL)) AND (target_reg_moment IS NULL)))),
-    CONSTRAINT br_validation_reg_moment_valid CHECK ((((target_code)::text = ANY ((ARRAY['application'::character varying, 'service'::character varying])::text[])) OR ((((target_code)::text <> ALL ((ARRAY['application'::character varying, 'service'::character varying])::text[])) AND (target_service_moment IS NULL)) AND (target_application_moment IS NULL)))),
+    CONSTRAINT br_validation_reg_moment_valid CHECK ((((target_code)::text = ANY (ARRAY[('application'::character varying)::text, ('service'::character varying)::text])) OR ((((target_code)::text <> ALL (ARRAY[('application'::character varying)::text, ('service'::character varying)::text])) AND (target_service_moment IS NULL)) AND (target_application_moment IS NULL)))),
     CONSTRAINT br_validation_rrr_rrr_type_valid CHECK (((target_rrr_type_code IS NULL) OR ((target_rrr_type_code IS NOT NULL) AND ((target_code)::text = 'rrr'::text)))),
     CONSTRAINT br_validation_service_moment_valid CHECK ((((target_code)::text <> 'service'::text) OR ((((target_code)::text = 'service'::text) AND (target_application_moment IS NULL)) AND (target_reg_moment IS NULL)))),
     CONSTRAINT br_validation_service_request_type_valid CHECK (((target_request_type_code IS NULL) OR ((target_request_type_code IS NOT NULL) AND ((target_code)::text <> 'application'::text))))

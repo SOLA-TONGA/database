@@ -894,6 +894,7 @@ INSERT INTO approle (code, display_value, status, description) VALUES ('townapi'
 INSERT INTO approle (code, display_value, status, description) VALUES ('caveat', 'Service - Register Caveat', 'c', 'Registration Service. Allows the Register Caveat service to be started.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('varyCaveat', 'Service - Variation to Caveat', 'c', 'Registration Service. Allows the Variation to Caveat service to be started.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('removeCaveat', 'Service - Remove Caveat', 'c', 'Registration Service. Allows the Remove Caveat service to be started.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('ViewMap', 'Map - View', 'c', 'Allows the user to view the map. ');
 
 
 ALTER TABLE approle ENABLE TRIGGER ALL;
