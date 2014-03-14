@@ -67,8 +67,6 @@ digraph "compactRelationshipsDiagram" {
       <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">application_property</TD></TR>
       <TR><TD PORT="id" COLSPAN="3" BGCOLOR="#bed1b8" ALIGN="LEFT">id</TD></TR>
       <TR><TD PORT="application_id" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">application_id</TD></TR>
-      <TR><TD PORT="name_firstpart" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">name_firstpart</TD></TR>
-      <TR><TD PORT="name_lastpart" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">name_lastpart</TD></TR>
       <TR><TD PORT="ba_unit_id" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">ba_unit_id</TD></TR>
       <TR><TD PORT="land_use_code" COLSPAN="3" BGCOLOR="#f4f7da" ALIGN="LEFT">land_use_code</TD></TR>
       <TR><TD PORT="rowidentifier" COLSPAN="3" BGCOLOR="#c0c0c0" ALIGN="LEFT">rowidentifier</TD></TR>

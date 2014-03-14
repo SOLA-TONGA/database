@@ -107,7 +107,7 @@
          <column autoUpdated="false" digits="0" id="4" name="last_name" nullable="true" remarks="SOLA Extension: The last name for the party or blank for groups and organisations." size="50" type="varchar"/>
          <column autoUpdated="false" digits="0" id="5" name="fathers_name" nullable="true" remarks="SOLA Extension: The first name of the father for the party. Relevant where the fathers first name forms part of the name for the party." size="50" type="varchar"/>
          <column autoUpdated="false" digits="0" id="6" name="fathers_last_name" nullable="true" remarks="SOLA Extension: The last name of the father for the party. Relevant where the fathers last name forms part of the name for the party." size="50" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="7" name="alias" nullable="true" remarks="SOLA Extension: Any alias for the party. A party can have more than one alias. If so, the aliases should be separated by a comma." size="50" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="alias" nullable="true" remarks="SOLA Extension: Any alias for the party. A party can have more than one alias. If so, the aliases should be separated by a comma." size="250" type="varchar"/>
          <column autoUpdated="false" digits="0" id="8" name="gender_code" nullable="true" remarks="SOLA Extension: Identifies the gender for the party. If the party is of type naturalPerson then a gender code must be specified." size="20" type="varchar">
             <parent column="code" foreignKey="party_gender_code_fk13" implied="false" onDeleteCascade="false" table="gender_type"/>
          </column>

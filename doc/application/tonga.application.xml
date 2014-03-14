@@ -98,8 +98,8 @@
          <column autoUpdated="false" digits="0" id="3" name="name_lastpart" nullable="true" remarks="The remaining part of the name or reference assigned by the land administration agency to identify the property." size="50" type="varchar"/>
          <column autoUpdated="false" defaultValue="0" digits="2" id="4" name="area" nullable="true" remarks="The area of the property. This value should be square meters and converted if required for display to the user. e.g. Converted on display into and imperial acres, roods and perches value." size="20" type="numeric"/>
          <column autoUpdated="false" defaultValue="0" digits="2" id="5" name="total_value" nullable="false" remarks="The land or property value (may vary from jurisdiction to jurisdiction) on which a proportionate service fee can be calculated." size="20" type="numeric"/>
-         <column autoUpdated="false" defaultValue="false" digits="0" id="6" name="verified_exists" nullable="false" remarks="Flag to indicate if the property details provided for the application match an existing property record in the BA Unit table. In the case of SOLA Tonga, this is used to indicate the allotment details match an allotment property in the system." size="1" type="bool"/>
-         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="verified_location" nullable="false" remarks="Flag to indicate if the property details provided for the application reference an existing parcel record in the Cadastre Object table." size="1" type="bool"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="6" name="verified_exists" nullable="false" remarks="Flag to indicate if the property details provided for the application match an existing property record in the BA Unit table." size="1" type="bool"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="verified_location" nullable="false" remarks="Flag to indicate if the property details provided for the application reference an existing parcel record in the Cadastre Object table. Not currently used by SOLA Tonga." size="1" type="bool"/>
          <column autoUpdated="false" digits="0" id="8" name="ba_unit_id" nullable="true" remarks="Reference to a record in the BA Unit table that matches the property details provided for the application. In the case of SOLA Tonga, this is used to indicate the BA Unit Id of the allotment matching the details provided." size="40" type="varchar">
             <parent column="id" foreignKey="application_property_ba_unit_id_fk100" implied="false" onDeleteCascade="false" table="ba_unit"/>
          </column>
@@ -112,21 +112,21 @@
          <column autoUpdated="false" digits="0" id="13" name="change_user" nullable="true" remarks="The user id of the last person to modify the row." size="50" type="varchar"/>
          <column autoUpdated="false" defaultValue="now()" digits="6" id="14" name="change_time" nullable="false" remarks="The date and time the row was last modified." size="29" type="timestamp"/>
          <column autoUpdated="false" digits="0" id="15" name="lease_number" nullable="true" remarks="SOLA Tonga Extension. The lease number of the property affected by the application." size="40" type="varchar"/>
-         <column autoUpdated="false" digits="2" id="16" name="lease_area" nullable="true" remarks="SOLA Tonga Extension. The area of the lease." size="20" type="numeric"/>
-         <column autoUpdated="false" digits="2" id="17" name="lease_term" nullable="true" remarks="SOLA Tonga Extension. The term of the lease." size="8" type="numeric"/>
-         <column autoUpdated="false" digits="2" id="18" name="amount" nullable="true" remarks="SOLA Tonga Extension. The rental value for the lease or sublease." size="20" type="numeric"/>
-         <column autoUpdated="false" digits="6" id="19" name="registration_date" nullable="true" remarks="SOLA Tonga Extension. The registration date of the property associated to the application." size="29" type="timestamp"/>
-         <column autoUpdated="false" digits="0" id="20" name="lessor_name" nullable="true" remarks="SOLA Tonga Extension. The name of the lessor." size="255" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="21" name="island_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the island the property is located on." size="40" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="22" name="noble_estate_id" nullable="true" remarks="SOLA Tonga Extension. BA Unt Id of the estate the property is located on." size="40" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="23" name="description" nullable="true" remarks="SOLA Tonga Extension. General description provided for the property. Typically a survey description." size="1000" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="24" name="town_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the town the property is located near." size="40" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="25" name="lease_ba_unit_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the lease property matching the lease details." size="40" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="26" name="lessee_name" nullable="true" remarks="SOLA Tonga Extension. The name of the lessee for the lease (or sublease)" size="255" type="varchar"/>
-         <column autoUpdated="false" defaultValue="false" digits="0" id="27" name="lease_linked" nullable="false" remarks="SOLA Tonga Extension. Flag to indicate if the lease matches a property record in the system." size="1" type="bool"/>
-         <column autoUpdated="false" digits="0" id="28" name="sublease_number" nullable="true" remarks="SOLA Tonga Extension. The sublease number provided by the applicant." size="40" type="varchar"/>
-         <column autoUpdated="false" digits="0" id="29" name="sublease_ba_unit_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the sublease property matching the sublease details." size="40" type="varchar"/>
-         <column autoUpdated="false" defaultValue="false" digits="0" id="30" name="sublease_linked" nullable="false" remarks="SOLA Tonga Extension. Flag to indicate if the sublease matches a property record in the system." size="1" type="bool"/>
+         <column autoUpdated="false" digits="2" id="16" name="lease_term" nullable="true" remarks="SOLA Tonga Extension. The term of the lease." size="8" type="numeric"/>
+         <column autoUpdated="false" digits="2" id="17" name="amount" nullable="true" remarks="SOLA Tonga Extension. The rental value for the lease or sublease." size="20" type="numeric"/>
+         <column autoUpdated="false" digits="6" id="18" name="registration_date" nullable="true" remarks="SOLA Tonga Extension. The registration date of the property associated to the application." size="29" type="timestamp"/>
+         <column autoUpdated="false" digits="0" id="19" name="lessor_name" nullable="true" remarks="SOLA Tonga Extension. The name of the lessor." size="255" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="20" name="island_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the island the property is located on." size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="21" name="noble_estate_id" nullable="true" remarks="SOLA Tonga Extension. BA Unt Id of the estate the property is located on." size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="22" name="description" nullable="true" remarks="SOLA Tonga Extension. General description provided for the property. Typically a survey description." size="1000" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="23" name="town_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the town the property is located near." size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="24" name="lease_ba_unit_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the lease property matching the lease details." size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="25" name="lessee_name" nullable="true" remarks="SOLA Tonga Extension. The name of the lessee for the lease." size="255" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="26" name="sublease_number" nullable="true" remarks="SOLA Tonga Extension. The sublease number provided by the applicant." size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="27" name="sublease_ba_unit_id" nullable="true" remarks="SOLA Tonga Extension. BA Unit Id of the sublease property matching the sublease details." size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="28" name="sublessee_name" nullable="true" remarks="SOLA Tonga Extension. The name of the sublessee for the sublease." size="255" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="29" name="registered_name" nullable="true" remarks="SOLA Tonga Extension: Name provided for the parcel by the allotment holder when they register their new allotment (a.k.a. parcel name)." size="255" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="30" name="type_code" nullable="true" remarks="SOLA Tonga Extension: Indicates the type of property. One of taxUnit, townAllotmentUnit, leasedUnit, subleaseUnit, estateUnit" size="20" type="varchar"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="application_property_pkey" unique="true">
             <column ascending="true" name="id"/>
@@ -142,11 +142,6 @@
          </index>
          <index name="application_property_land_use_code_fk126_ind" unique="false">
             <column ascending="true" name="land_use_code"/>
-         </index>
-         <index name="application_property_property_once" unique="true">
-            <column ascending="true" name="application_id"/>
-            <column ascending="true" name="name_firstpart"/>
-            <column ascending="true" name="name_lastpart"/>
          </index>
       </table>
       <table name="application_spatial_unit" remarks="Captures details of parcels (a.k.a. Cadastre Objects or Spatial Units) associated to an application.&#10;Tags: FLOSS SOLA Extension, Change History" schema="application" type="TABLE">

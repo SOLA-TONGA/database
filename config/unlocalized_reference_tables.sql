@@ -18,6 +18,10 @@ SET SESSION AUTHORIZATION DEFAULT;
 
 ALTER TABLE request_type_requires_source_type DISABLE TRIGGER ALL;
 
+INSERT INTO request_type_requires_source_type (source_type_code, request_type_code) VALUES ('permit', 'permit');
+INSERT INTO request_type_requires_source_type (source_type_code, request_type_code) VALUES ('powerOfAttorney', 'regnPowerOfAttorney');
+INSERT INTO request_type_requires_source_type (source_type_code, request_type_code) VALUES ('surrenderDocs', 'apiSurrender');
+INSERT INTO request_type_requires_source_type (source_type_code, request_type_code) VALUES ('mortgageDoc', 'mortgageDocument');
 
 
 ALTER TABLE request_type_requires_source_type ENABLE TRIGGER ALL;

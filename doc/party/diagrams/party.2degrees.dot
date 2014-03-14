@@ -171,7 +171,7 @@ digraph "twoDegreesRelationshipsDiagram" {
       <TR><TD PORT="last_name" COLSPAN="2" ALIGN="LEFT">last_name</TD><TD PORT="last_name.type" ALIGN="LEFT">varchar[50]</TD></TR>
       <TR><TD PORT="fathers_name" COLSPAN="2" ALIGN="LEFT">fathers_name</TD><TD PORT="fathers_name.type" ALIGN="LEFT">varchar[50]</TD></TR>
       <TR><TD PORT="fathers_last_name" COLSPAN="2" ALIGN="LEFT">fathers_last_name</TD><TD PORT="fathers_last_name.type" ALIGN="LEFT">varchar[50]</TD></TR>
-      <TR><TD PORT="alias" COLSPAN="2" ALIGN="LEFT">alias</TD><TD PORT="alias.type" ALIGN="LEFT">varchar[50]</TD></TR>
+      <TR><TD PORT="alias" COLSPAN="2" ALIGN="LEFT">alias</TD><TD PORT="alias.type" ALIGN="LEFT">varchar[250]</TD></TR>
       <TR><TD PORT="gender_code" COLSPAN="2" BGCOLOR="#f4f7da" ALIGN="LEFT">gender_code</TD><TD PORT="gender_code.type" ALIGN="LEFT">varchar[20]</TD></TR>
       <TR><TD PORT="address_id" COLSPAN="2" BGCOLOR="#f4f7da" ALIGN="LEFT">address_id</TD><TD PORT="address_id.type" ALIGN="LEFT">varchar[40]</TD></TR>
       <TR><TD PORT="id_type_code" COLSPAN="2" BGCOLOR="#f4f7da" ALIGN="LEFT">id_type_code</TD><TD PORT="id_type_code.type" ALIGN="LEFT">varchar[20]</TD></TR>

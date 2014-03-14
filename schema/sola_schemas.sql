@@ -5958,7 +5958,6 @@ CREATE TABLE application_property (
     change_user character varying(50),
     change_time timestamp without time zone DEFAULT now() NOT NULL,
     lease_number character varying(40),
-    lease_area numeric(20,2),
     lease_term numeric(8,2),
     amount numeric(20,2),
     registration_date timestamp without time zone,
@@ -5969,10 +5968,11 @@ CREATE TABLE application_property (
     town_id character varying(40),
     lease_ba_unit_id character varying(40),
     lessee_name character varying(255),
-    lease_linked boolean DEFAULT false NOT NULL,
     sublease_number character varying(40),
     sublease_ba_unit_id character varying(40),
-    sublease_linked boolean DEFAULT false NOT NULL
+    sublessee_name character varying(255),
+    registered_name character varying(255),
+    type_code character varying(20)
 );
 
 
@@ -6032,14 +6032,14 @@ COMMENT ON COLUMN application_property.total_value IS 'The land or property valu
 -- Name: COLUMN application_property.verified_exists; Type: COMMENT; Schema: application; Owner: postgres
 --
 
-COMMENT ON COLUMN application_property.verified_exists IS 'Flag to indicate if the property details provided for the application match an existing property record in the BA Unit table. In the case of SOLA Tonga, this is used to indicate the allotment details match an allotment property in the system.';
+COMMENT ON COLUMN application_property.verified_exists IS 'Flag to indicate if the property details provided for the application match an existing property record in the BA Unit table.';
 
 
 --
 -- Name: COLUMN application_property.verified_location; Type: COMMENT; Schema: application; Owner: postgres
 --
 
-COMMENT ON COLUMN application_property.verified_location IS 'Flag to indicate if the property details provided for the application reference an existing parcel record in the Cadastre Object table.';
+COMMENT ON COLUMN application_property.verified_location IS 'Flag to indicate if the property details provided for the application reference an existing parcel record in the Cadastre Object table. Not currently used by SOLA Tonga.';
 
 
 --
@@ -6096,13 +6096,6 @@ COMMENT ON COLUMN application_property.change_time IS 'The date and time the row
 --
 
 COMMENT ON COLUMN application_property.lease_number IS 'SOLA Tonga Extension. The lease number of the property affected by the application.';
-
-
---
--- Name: COLUMN application_property.lease_area; Type: COMMENT; Schema: application; Owner: postgres
---
-
-COMMENT ON COLUMN application_property.lease_area IS 'SOLA Tonga Extension. The area of the lease.';
 
 
 --
@@ -6172,14 +6165,7 @@ COMMENT ON COLUMN application_property.lease_ba_unit_id IS 'SOLA Tonga Extension
 -- Name: COLUMN application_property.lessee_name; Type: COMMENT; Schema: application; Owner: postgres
 --
 
-COMMENT ON COLUMN application_property.lessee_name IS 'SOLA Tonga Extension. The name of the lessee for the lease (or sublease)';
-
-
---
--- Name: COLUMN application_property.lease_linked; Type: COMMENT; Schema: application; Owner: postgres
---
-
-COMMENT ON COLUMN application_property.lease_linked IS 'SOLA Tonga Extension. Flag to indicate if the lease matches a property record in the system.';
+COMMENT ON COLUMN application_property.lessee_name IS 'SOLA Tonga Extension. The name of the lessee for the lease.';
 
 
 --
@@ -6197,10 +6183,24 @@ COMMENT ON COLUMN application_property.sublease_ba_unit_id IS 'SOLA Tonga Extens
 
 
 --
--- Name: COLUMN application_property.sublease_linked; Type: COMMENT; Schema: application; Owner: postgres
+-- Name: COLUMN application_property.sublessee_name; Type: COMMENT; Schema: application; Owner: postgres
 --
 
-COMMENT ON COLUMN application_property.sublease_linked IS 'SOLA Tonga Extension. Flag to indicate if the sublease matches a property record in the system.';
+COMMENT ON COLUMN application_property.sublessee_name IS 'SOLA Tonga Extension. The name of the sublessee for the sublease.';
+
+
+--
+-- Name: COLUMN application_property.registered_name; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN application_property.registered_name IS '	SOLA Tonga Extension: Name provided for the parcel by the allotment holder when they register their new allotment (a.k.a. parcel name).';
+
+
+--
+-- Name: COLUMN application_property.type_code; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN application_property.type_code IS 'SOLA Tonga Extension: Indicates the type of property. One of taxUnit, townAllotmentUnit, leasedUnit, subleaseUnit, estateUnit';
 
 
 --
@@ -6225,7 +6225,6 @@ CREATE TABLE application_property_historic (
     change_time timestamp without time zone,
     change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL,
     lease_number character varying(40),
-    lease_area numeric(20,2),
     lease_term numeric(8,2),
     amount numeric(20,2),
     registration_date timestamp without time zone,
@@ -6236,10 +6235,11 @@ CREATE TABLE application_property_historic (
     town_id character varying(40),
     lease_ba_unit_id character varying(40),
     lessee_name character varying(255),
-    lease_linked boolean,
     sublease_number character varying(40),
     sublease_ba_unit_id character varying(40),
-    sublease_linked boolean DEFAULT false NOT NULL
+    sublessee_name character varying(255),
+    registered_name character varying(255),
+    type_code character varying(20)
 );
 
 
@@ -9979,7 +9979,7 @@ CREATE TABLE party (
     last_name character varying(50),
     fathers_name character varying(50),
     fathers_last_name character varying(50),
-    alias character varying(50),
+    alias character varying(250),
     gender_code character varying(20),
     address_id character varying(40),
     id_type_code character varying(20),
@@ -13416,14 +13416,6 @@ ALTER TABLE ONLY application
 
 ALTER TABLE ONLY application_property
     ADD CONSTRAINT application_property_pkey PRIMARY KEY (id);
-
-
---
--- Name: application_property_property_once; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY application_property
-    ADD CONSTRAINT application_property_property_once UNIQUE (application_id, name_firstpart, name_lastpart);
 
 
 --

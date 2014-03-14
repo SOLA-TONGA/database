@@ -602,10 +602,10 @@ SET search_path = party, pg_catalog;
 ALTER TABLE communication_type DISABLE TRIGGER ALL;
 
 INSERT INTO communication_type (code, display_value, status, description) VALUES ('eMail', 'e-Mail::::E-mail', 'c', NULL);
-INSERT INTO communication_type (code, display_value, status, description) VALUES ('fax', 'Fax::::Fax', 'c', NULL);
 INSERT INTO communication_type (code, display_value, status, description) VALUES ('post', 'Post::::Posta', 'c', NULL);
 INSERT INTO communication_type (code, display_value, status, description) VALUES ('phone', 'Phone::::Telefono', 'c', NULL);
-INSERT INTO communication_type (code, display_value, status, description) VALUES ('courier', 'Courier::::Corriere', 'c', NULL);
+INSERT INTO communication_type (code, display_value, status, description) VALUES ('fax', 'Fax::::Fax', 'x', NULL);
+INSERT INTO communication_type (code, display_value, status, description) VALUES ('courier', 'Courier::::Corriere', 'x', NULL);
 
 
 ALTER TABLE communication_type ENABLE TRIGGER ALL;

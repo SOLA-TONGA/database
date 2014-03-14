@@ -42,7 +42,6 @@ digraph "oneDegreeRelationshipsDiagram" {
       <TR><TD PORT="change_user" COLSPAN="3" ALIGN="LEFT">change_user</TD></TR>
       <TR><TD PORT="change_time" COLSPAN="3" ALIGN="LEFT">change_time</TD></TR>
       <TR><TD PORT="lease_number" COLSPAN="3" ALIGN="LEFT">lease_number</TD></TR>
-      <TR><TD PORT="lease_area" COLSPAN="3" ALIGN="LEFT">lease_area</TD></TR>
       <TR><TD PORT="lease_term" COLSPAN="3" ALIGN="LEFT">lease_term</TD></TR>
       <TR><TD PORT="amount" COLSPAN="3" ALIGN="LEFT">amount</TD></TR>
       <TR><TD PORT="registration_date" COLSPAN="3" ALIGN="LEFT">registration_date</TD></TR>
@@ -53,10 +52,11 @@ digraph "oneDegreeRelationshipsDiagram" {
       <TR><TD PORT="town_id" COLSPAN="3" ALIGN="LEFT">town_id</TD></TR>
       <TR><TD PORT="lease_ba_unit_id" COLSPAN="3" ALIGN="LEFT">lease_ba_unit_id</TD></TR>
       <TR><TD PORT="lessee_name" COLSPAN="3" ALIGN="LEFT">lessee_name</TD></TR>
-      <TR><TD PORT="lease_linked" COLSPAN="3" ALIGN="LEFT">lease_linked</TD></TR>
       <TR><TD PORT="sublease_number" COLSPAN="3" ALIGN="LEFT">sublease_number</TD></TR>
       <TR><TD PORT="sublease_ba_unit_id" COLSPAN="3" ALIGN="LEFT">sublease_ba_unit_id</TD></TR>
-      <TR><TD PORT="sublease_linked" COLSPAN="3" ALIGN="LEFT">sublease_linked</TD></TR>
+      <TR><TD PORT="sublessee_name" COLSPAN="3" ALIGN="LEFT">sublessee_name</TD></TR>
+      <TR><TD PORT="registered_name" COLSPAN="3" ALIGN="LEFT">registered_name</TD></TR>
+      <TR><TD PORT="type_code" COLSPAN="3" ALIGN="LEFT">type_code</TD></TR>
       <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">&lt; 1</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
     </TABLE>>
     URL="../../application/tables/application_property.html"
