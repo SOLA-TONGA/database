@@ -1,0 +1,18 @@
+# Crontab file used by SOLA for backing up the SOLA Tonga database
+# Backups that are executed
+# 1. Daily backup of Main tables occuring at 18:05
+# 2. Daily backup of History tables occuring at 18:10
+# 3. Partial backup of documents table occuring daily at 18:15
+# 4. Weekly development backup of SOLA occuring each Friday at 18:30
+# 5. Weekly backup of Main tables for training occurring each Friday at 18:40
+# 6. Weekly backup of documents tables for training occurring each Friday at 18:45
+# 7. Weekly restore to training each Friday at 19:00
+# 8. Removal of any old backups occuring daily at 19:15
+5 18 * * * /opt/sola/backup/scripts/backup_sola.sh -t M -f 03-Daily 
+10 18 * * * /opt/sola/backup/scripts/backup_sola.sh -t H -f 03-Daily
+15 18 * * * /opt/sola/backup/scripts/backup_sola_docs.sh -t P -f 03-Daily 
+30 18 * * 5 /opt/sola/backup/scripts/backup_sola_development.sh -f 04-Development -a s0laT0ng@!
+40 18 * * 5 /opt/sola/backup/scripts/backup_sola.sh -t T -f 05-Train
+45 18 * * 5 /opt/sola/backup/scripts/backup_sola_docs.sh -t T -f 05-Train
+00 19 * * 5 /opt/sola/backup/scripts/restore_training.sh -s 192.168.2.228 -d sola_test
+15 19 * * * /opt/sola/backup/scripts/remove_backups.sh
