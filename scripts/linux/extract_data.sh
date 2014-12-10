@@ -140,7 +140,7 @@ $pg_dump -h $host -p $port -U $username -a -b \
     --column-inserts --disable-dollar-quoting --disable-triggers \
 	-t application.application -t application.application_property \
 	-t application.service -t application.application_spatial_unit \
-	-t application.service_checklist_item \
+	-t application.service_checklist_item -t application.drafting \
     -f "$data_path/08_application.sql" $dbname >> $EXTRACT_LOG 2>&1
 	
 echo "Dumping bulk operation tables..."

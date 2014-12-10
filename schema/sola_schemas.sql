@@ -6614,6 +6614,260 @@ COMMENT ON COLUMN checklist_item_in_group.checklist_item_code IS 'Code of the ch
 
 
 --
+-- Name: drafting; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE drafting (
+    id character varying(40) NOT NULL,
+    service_id character varying(40),
+    item_number character varying(40),
+    date_received timestamp without time zone,
+    item_firstname character varying(250),
+    item_lastname character varying(250),
+    nature_of_survey character varying(100),
+    location character varying(250),
+    trace_by character varying(100),
+    trace_date timestamp without time zone,
+    sent_to character varying(100),
+    send_date timestamp without time zone,
+    return_date timestamp without time zone,
+    draw_deed character varying(100),
+    deed_number character varying(100),
+    plotting_by character varying(100),
+    plotting_date timestamp without time zone,
+    plan_number character varying(100),
+    refer_info character varying(500),
+    comment text,
+    rowidentifier character varying(40) DEFAULT public.uuid_generate_v1() NOT NULL,
+    rowversion integer DEFAULT 0 NOT NULL,
+    change_action character(1) DEFAULT 'i'::bpchar NOT NULL,
+    change_user character varying(50),
+    change_time timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.drafting OWNER TO postgres;
+
+--
+-- Name: TABLE drafting; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON TABLE drafting IS 'Contains data migrated from the Drafting section Item Number database as well as new drafting records created via SOLA Tonga. 
+Tags: SOLA Tonga Extension, Change History';
+
+
+--
+-- Name: COLUMN drafting.id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.id IS 'Identifier for the draugthing record.';
+
+
+--
+-- Name: COLUMN drafting.service_id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.service_id IS 'Identifier for the service that created this drafting record. NULL if the record was migrated from the Item Number databse or was created without using a service.';
+
+
+--
+-- Name: COLUMN drafting.item_number; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.item_number IS 'The item number from the application';
+
+
+--
+-- Name: COLUMN drafting.date_received; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.date_received IS 'The date received at drafting';
+
+
+--
+-- Name: COLUMN drafting.item_firstname; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.item_firstname IS 'The first name of the applicant';
+
+
+--
+-- Name: COLUMN drafting.item_lastname; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.item_lastname IS 'The last name of the applicant';
+
+
+--
+-- Name: COLUMN drafting.nature_of_survey; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.nature_of_survey IS 'Description of the survey undertaken prior to drafting';
+
+
+--
+-- Name: COLUMN drafting.location; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.location IS 'The town or island where the land is located';
+
+
+--
+-- Name: COLUMN drafting.trace_by; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.trace_by IS 'The name of the tracer';
+
+
+--
+-- Name: COLUMN drafting.trace_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.trace_date IS 'The date of tracing';
+
+
+--
+-- Name: COLUMN drafting.sent_to; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.sent_to IS 'The person the application was sent to in Survey';
+
+
+--
+-- Name: COLUMN drafting.send_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.send_date IS 'The date the application was sent to Survey';
+
+
+--
+-- Name: COLUMN drafting.return_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.return_date IS 'The date the application was returned from survey ready for drafting';
+
+
+--
+-- Name: COLUMN drafting.draw_deed; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.draw_deed IS 'The name of the person that drew the deed';
+
+
+--
+-- Name: COLUMN drafting.deed_number; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.deed_number IS 'The number for the deed of grant this record relates to';
+
+
+--
+-- Name: COLUMN drafting.plotting_by; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.plotting_by IS 'The name of the plotter';
+
+
+--
+-- Name: COLUMN drafting.plotting_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.plotting_date IS 'The date of plotting';
+
+
+--
+-- Name: COLUMN drafting.plan_number; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.plan_number IS 'The survey plan number';
+
+
+--
+-- Name: COLUMN drafting.refer_info; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.refer_info IS 'A list of any item numbers referring to this record.';
+
+
+--
+-- Name: COLUMN drafting.comment; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.comment IS 'General comments relating to the record';
+
+
+--
+-- Name: COLUMN drafting.rowidentifier; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.rowidentifier IS 'Identifies the all change records for the row in the drafting_historic table';
+
+
+--
+-- Name: COLUMN drafting.rowversion; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.rowversion IS 'Sequential value indicating the number of times this row has been modified.';
+
+
+--
+-- Name: COLUMN drafting.change_action; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.change_action IS 'Indicates if the last data modification action that occurred to the row was insert (i), update (u) or delete (d).';
+
+
+--
+-- Name: COLUMN drafting.change_user; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.change_user IS 'The user id of the last person to modify the row.';
+
+
+--
+-- Name: COLUMN drafting.change_time; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN drafting.change_time IS 'The date and time the row was last modified.';
+
+
+--
+-- Name: drafting_historic; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE drafting_historic (
+    id character varying(40),
+    service_id character varying(40),
+    item_number character varying(40),
+    date_received timestamp without time zone,
+    item_firstname character varying(250),
+    item_lastname character varying(250),
+    nature_of_survey character varying(100),
+    location character varying(250),
+    trace_by character varying(100),
+    trace_date timestamp without time zone,
+    sent_to character varying(100),
+    send_date timestamp without time zone,
+    return_date timestamp without time zone,
+    draw_deed character varying(100),
+    deed_number character varying(100),
+    plotting_by character varying(100),
+    plotting_date timestamp without time zone,
+    plan_number character varying(100),
+    refer_info character varying(500),
+    comment text,
+    rowidentifier character varying(40),
+    rowversion integer,
+    change_action character(1),
+    change_user character varying(50),
+    change_time timestamp without time zone,
+    change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.drafting_historic OWNER TO postgres;
+
+--
 -- Name: request_category_type; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
 --
 
@@ -13491,6 +13745,14 @@ ALTER TABLE ONLY checklist_item
 
 
 --
+-- Name: drafting_pkey; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY drafting
+    ADD CONSTRAINT drafting_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: request_category_type_display_value_unique; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
 --
 
@@ -15141,6 +15403,20 @@ CREATE INDEX application_uses_source_source_id_fk102_ind ON application_uses_sou
 
 
 --
+-- Name: drafting_index_on_rowidentifier; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX drafting_index_on_rowidentifier ON drafting USING btree (rowidentifier);
+
+
+--
+-- Name: drafting_service_id_idx; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX drafting_service_id_idx ON drafting USING btree (service_id);
+
+
+--
 -- Name: request_type_request_category_code_fk20_ind; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
 --
 
@@ -16540,6 +16816,13 @@ CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON service_checklist_item
 
 
 --
+-- Name: __track_changes; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON drafting FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
+
+
+--
 -- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
 --
 
@@ -16579,6 +16862,13 @@ CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON application_spatial_uni
 --
 
 CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON service_checklist_item FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
+
+
+--
+-- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON drafting FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
 
 
 SET search_path = bulk_operation, pg_catalog;
@@ -17420,6 +17710,14 @@ ALTER TABLE ONLY checklist_item_in_group
 
 ALTER TABLE ONLY checklist_item_in_group
     ADD CONSTRAINT checklist_item_in_group_item_code_fk FOREIGN KEY (checklist_item_code) REFERENCES checklist_item(code) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: drafting_service_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: postgres
+--
+
+ALTER TABLE ONLY drafting
+    ADD CONSTRAINT drafting_service_id_fkey FOREIGN KEY (service_id) REFERENCES service(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
 --
