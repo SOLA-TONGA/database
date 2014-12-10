@@ -184,6 +184,7 @@ INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversi
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'registration-id', 'e28e86fa-a249-11e3-9651-437e724d9088', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'team-leader-id', 'e28eae0a-a249-11e3-91da-ab6a1bace78b', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('ViewMap', 'hod-id', 'e28ed51a-a249-11e3-90f2-fbb858157c73', 1, 'i', 'db:postgres', '2014-03-03 09:33:16.785');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('drafting', 'drafting-id', '30d130e4-801e-11e4-85cd-2751b7deb927', 1, 'i', 'db:postgres', '2014-12-10 16:39:48.409');
 
 
 ALTER TABLE approle_appgroup ENABLE TRIGGER ALL;
@@ -245,6 +246,8 @@ INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion
 INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('9d2a6029-8781-4b36-aa7f-6eb00105d6e5', 'registration-id', '207c544a-9eb4-11e3-81c6-d352e8a0964d', 1, 'i', 'db:postgres', '2014-02-26 20:03:42.756');
 INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('f38f8409-9f31-4f5a-94f5-e92a196f1833', 'read-only-id', '207cf08a-9eb4-11e3-b295-439fb5d6af94', 1, 'i', 'db:postgres', '2014-02-26 20:03:42.76');
 INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('6d18b50b-c8c1-4fc6-974a-91bc26aa807a', 'read-only-id', '207db3da-9eb4-11e3-99fd-fb00a8af6315', 1, 'i', 'db:postgres', '2014-02-26 20:03:42.764');
+INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('24e16f88-9769-40aa-aedb-b8ff34bfed07', 'drafting-id', '30d2de9e-801e-11e4-a05f-3be7166cefec', 1, 'i', 'db:postgres', '2014-12-10 16:39:48.409');
+INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('03dcb308-443e-42ad-bddc-3d3a8092f87e', 'drafting-id', '30d32cbe-801e-11e4-abde-23fa4eeb3644', 1, 'i', 'db:postgres', '2014-12-10 16:39:48.409');
 
 
 ALTER TABLE appuser_appgroup ENABLE TRIGGER ALL;

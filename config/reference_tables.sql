@@ -379,6 +379,7 @@ INSERT INTO request_type (code, request_category_code, display_value, descriptio
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('cancelPermit', 'docRegServices', 'Cancel Permit::::TONGAN', 'Cancellation of permit for occupation by alien(s), removal of Sand, etc.', 'c', 5, 0.00, 0.00, 0.00, 0, NULL, NULL, NULL, 'Permits and Power of Attorney', 515);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('correctRegistry', 'registrationServices', 'Correct Registry::::TONGAN', 'Allows corrections to the registered information to be made.', 'c', 1, 2.00, 0.00, 0.00, 0, 'Registry Correction', NULL, NULL, 'Corrections', 600);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('correctRegistryRem', 'registrationServices', 'Correct Registry (Remove Right)::::TONGAN', 'Allows corrections to the registered information to be made by removing rights.', 'c', 1, 2.00, 0.00, 0.00, 0, 'Registry Correction', NULL, 'cancel', 'Corrections', 605);
+INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('drafting', 'applicationServices', 'Drafting::::TONGAN', 'Service to allow capture of details relevant for Drafting', 'c', 5, 0.00, 0.00, 0.00, 0, NULL, NULL, NULL, 'Workflow', 33);
 
 
 ALTER TABLE request_type ENABLE TRIGGER ALL;
@@ -895,6 +896,7 @@ INSERT INTO approle (code, display_value, status, description) VALUES ('caveat',
 INSERT INTO approle (code, display_value, status, description) VALUES ('varyCaveat', 'Service - Variation to Caveat', 'c', 'Registration Service. Allows the Variation to Caveat service to be started.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('removeCaveat', 'Service - Remove Caveat', 'c', 'Registration Service. Allows the Remove Caveat service to be started.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('ViewMap', 'Map - View', 'c', 'Allows the user to view the map. ');
+INSERT INTO approle (code, display_value, status, description) VALUES ('drafting', 'Service - drafting', 'c', 'Application Service. Allows the Drafting service to be started.');
 
 
 ALTER TABLE approle ENABLE TRIGGER ALL;
