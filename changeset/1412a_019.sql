@@ -27,6 +27,11 @@ VALUES ('drafting', 'Service - drafting', 'c', 'Application Service. Allows the 
 -- Add the Drafting security Role to the Drafting security Group
 INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('drafting','drafting-id'); 
 
+-- Add a security role for DraftingSearch to control which users see the Drafting search
+INSERT INTO system.approle (code, display_value, status, description)
+VALUES ('DraftingSearch', 'Drafting - Drafting Search', 'c', 'Allows users to search for items from the migrated drafting database.');
+INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('DraftingSearch','drafting-id'); 
+
 -- Make sure andrew and semisi have the Drafting Security Group so they can test the new functionality. 
 INSERT INTO system.appuser_appgroup (appuser_id, appgroup_id) 
 SELECT id, 'drafting-id' FROM system.appuser WHERE username IN ('andrew', 'semisi');
