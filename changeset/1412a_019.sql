@@ -22,7 +22,7 @@ INSERT INTO application.request_type(code, request_category_code, display_value,
 -- Add a security role for the drafting service that can be used to control which users can Start the service.
 -- the approle.code must match exactly the request_type.code for the service.
 INSERT INTO system.approle (code, display_value, status, description)
-VALUES ('drafting', 'Service - drafting', 'c', 'Application Service. Allows the Drafting service to be started.');
+VALUES ('drafting', 'Service - Drafting', 'c', 'Application Service. Allows the Drafting service to be started.');
    
 -- Add the Drafting security Role to the Drafting security Group
 INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('drafting','drafting-id'); 
@@ -31,6 +31,11 @@ INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('draftin
 INSERT INTO system.approle (code, display_value, status, description)
 VALUES ('DraftingSearch', 'Drafting - Drafting Search', 'c', 'Allows users to search for items from the migrated drafting database.');
 INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('DraftingSearch','drafting-id'); 
+
+-- Add a security role for DraftingEdit to control which users can edit the drafting database.
+INSERT INTO system.approle (code, display_value, status, description)
+VALUES ('DraftingEdit', 'Drafting - Drafting Edit', 'c', 'Allows users to add and modify items in migrated drafting database.');
+INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('DraftingEdit','drafting-id'); 
 
 -- Make sure andrew and semisi have the Drafting Security Group so they can test the new functionality. 
 INSERT INTO system.appuser_appgroup (appuser_id, appgroup_id) 
