@@ -6,9 +6,14 @@ DELETE FROM transaction.transaction WHERE from_service_id IN
 (SELECT id from application.service WHERE  request_type_code IN ('drafting'));
 DELETE FROM application.service where request_type_code IN ('drafting');
 DELETE FROM application.request_type WHERE code IN ('drafting');
-DELETE FROM system.approle WHERE code IN ('drafting');
-DELETE FROM system.appuser_appgroup WHERE  appgroup_id = 'drafting-id'
+DELETE FROM system.approle WHERE code IN ('drafting', 'DraftingSearch', 'DraftingEdit', 'DraftingRemove');
+DELETE FROM system.appuser_appgroup WHERE  appgroup_id IN ( 'drafting-id', 'drafting-remove-id')
 AND  appuser_id IN (SELECT id FROM system.appuser WHERE username IN ('andrew', 'semisi')); 
+DELETE FROM system.appgroup WHERE id = 'drafting-remove-id'; 
+
+-- Add a new Security Group to manage removal of Drafting items. 
+INSERT INTO system.appgroup (id, name, description)
+VALUES ('drafting-remove-id', 'Drafting Remove', 'This group allows drafting staff to remove drafting items from the database' ); 
 
 -- Add new Drafting workflow service. display_order of 33 will ensure Drafting
 -- service is shown between Survey and Draft Deed services in the Add Services dialog. 
@@ -37,9 +42,17 @@ INSERT INTO system.approle (code, display_value, status, description)
 VALUES ('DraftingEdit', 'Drafting - Drafting Edit', 'c', 'Allows users to add and modify items in migrated drafting database.');
 INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('DraftingEdit','drafting-id'); 
 
+-- Add a security role for DraftingRemove to control which users can remove the drafting records from the database.
+INSERT INTO system.approle (code, display_value, status, description)
+VALUES ('DraftingRemove', 'Drafting - Drafting Remove', 'c', 'Allows users to remove items from the migrated drafting database.');
+INSERT INTO system.approle_appgroup (approle_code, appgroup_id) VALUES ('DraftingRemove','drafting-remove-id'); 
+
 -- Make sure andrew and semisi have the Drafting Security Group so they can test the new functionality. 
 INSERT INTO system.appuser_appgroup (appuser_id, appgroup_id) 
 SELECT id, 'drafting-id' FROM system.appuser WHERE username IN ('andrew', 'semisi');
+
+INSERT INTO system.appuser_appgroup (appuser_id, appgroup_id) 
+SELECT id, 'drafting-remove-id' FROM system.appuser WHERE username IN ('andrew', 'semisi');
 
 -- *** Drop and create the drafting tables
 DROP TABLE IF EXISTS application.drafting;
