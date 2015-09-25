@@ -897,6 +897,11 @@ INSERT INTO approle (code, display_value, status, description) VALUES ('varyCave
 INSERT INTO approle (code, display_value, status, description) VALUES ('removeCaveat', 'Service - Remove Caveat', 'c', 'Registration Service. Allows the Remove Caveat service to be started.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('ViewMap', 'Map - View', 'c', 'Allows the user to view the map. ');
 INSERT INTO approle (code, display_value, status, description) VALUES ('drafting', 'Service - drafting', 'c', 'Application Service. Allows the Drafting service to be started.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('DraftingSearch', 'Drafting - Drafting Search', 'c', 'Allows users to search for items from the migrated drafting database.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('DraftingEdit', 'Drafting - Drafting Edit', 'c', 'Allows users to add and modify items in migrated drafting database.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('DraftingRemove', 'Drafting - Drafting Remove', 'c', 'Allows users to remove items from the migrated drafting database.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('MinisterEdit', 'Minister - Edit', 'c', 'Allows users to add and modify items in the ministers database.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('MinisterSearch', 'Minister - Search', 'c', 'Allows users to search for items from the migrated minister database.');
 
 
 ALTER TABLE approle ENABLE TRIGGER ALL;

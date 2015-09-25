@@ -6868,6 +6868,651 @@ CREATE TABLE drafting_historic (
 ALTER TABLE application.drafting_historic OWNER TO postgres;
 
 --
+-- Name: minister_application; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE minister_application (
+    id character varying(40) NOT NULL,
+    service_id character varying(40),
+    date_received timestamp without time zone,
+    name character varying(100),
+    location character varying(40),
+    land_type character varying(40),
+    noble character varying(80),
+    land_area character varying(80),
+    sign_date timestamp without time zone,
+    survey_fee character varying(20),
+    receipt_number character varying(40),
+    pay_date timestamp without time zone,
+    last_reg character varying(250),
+    ceo_direction character varying(250),
+    directed_division character varying(250),
+    comment text,
+    rowidentifier character varying(40) DEFAULT public.uuid_generate_v1() NOT NULL,
+    rowversion integer DEFAULT 0 NOT NULL,
+    change_action character(1) DEFAULT 'i'::bpchar NOT NULL,
+    change_user character varying(50),
+    change_time timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.minister_application OWNER TO postgres;
+
+--
+-- Name: TABLE minister_application; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON TABLE minister_application IS 'Contains data migrated from the Minister''s office secretary inward database as well as new inward records created via SOLA Tonga. 
+Tags: SOLA Tonga Extension, Change History';
+
+
+--
+-- Name: COLUMN minister_application.id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.id IS 'Identifier for the minister application';
+
+
+--
+-- Name: COLUMN minister_application.service_id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.service_id IS 'Identifier for the service that created this application. NULL if the record was migrated from the Secretary''s inward database ';
+
+
+--
+-- Name: COLUMN minister_application.date_received; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.date_received IS 'The date received at the Minister''s Office';
+
+
+--
+-- Name: COLUMN minister_application.name; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.name IS 'The name of the applicant';
+
+
+--
+-- Name: COLUMN minister_application.location; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.location IS 'The location of the land';
+
+
+--
+-- Name: COLUMN minister_application.land_type; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.land_type IS 'The land type (Town or Tax Allotment)';
+
+
+--
+-- Name: COLUMN minister_application.noble; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.noble IS 'The noble of the location';
+
+
+--
+-- Name: COLUMN minister_application.land_area; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.land_area IS 'Total area of the land';
+
+
+--
+-- Name: COLUMN minister_application.sign_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.sign_date IS 'The date the applicant and noble signed the application';
+
+
+--
+-- Name: COLUMN minister_application.survey_fee; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.survey_fee IS 'Survey fee that was paid';
+
+
+--
+-- Name: COLUMN minister_application.receipt_number; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.receipt_number IS 'Receipt number for the survey fee';
+
+
+--
+-- Name: COLUMN minister_application.pay_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.pay_date IS 'The date survey fee payment was made';
+
+
+--
+-- Name: COLUMN minister_application.last_reg; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.last_reg IS 'Recent registration history made on the land';
+
+
+--
+-- Name: COLUMN minister_application.ceo_direction; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.ceo_direction IS 'Decision made by the CEO for the application';
+
+
+--
+-- Name: COLUMN minister_application.directed_division; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.directed_division IS 'Division where the application is sent';
+
+
+--
+-- Name: COLUMN minister_application.comment; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.comment IS 'General comments relating to the record';
+
+
+--
+-- Name: COLUMN minister_application.rowidentifier; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.rowidentifier IS 'Identifies the all change records for the row in the minister_application_historic table';
+
+
+--
+-- Name: COLUMN minister_application.rowversion; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.rowversion IS 'Sequential value indicating the number of times this row has been modified.';
+
+
+--
+-- Name: COLUMN minister_application.change_action; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.change_action IS 'Indicates if the last data modification action that occurred to the row was insert (i), update (u) or delete (d).';
+
+
+--
+-- Name: COLUMN minister_application.change_user; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.change_user IS 'The user id of the last person to modify the row.';
+
+
+--
+-- Name: COLUMN minister_application.change_time; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_application.change_time IS 'The date and time the row was last modified.';
+
+
+--
+-- Name: minister_application_historic; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE minister_application_historic (
+    id character varying(40),
+    service_id character varying(40),
+    date_received timestamp without time zone,
+    name character varying(100),
+    location character varying(40),
+    noble character varying(80),
+    land_type character varying(40),
+    reg_date timestamp without time zone,
+    land_area character varying(80),
+    sign_date timestamp without time zone,
+    survey_fee character varying(20),
+    receipt_number character varying(40),
+    pay_date timestamp without time zone,
+    ceo_direction character varying(250),
+    directed_division character varying(250),
+    comment text,
+    rowidentifier character varying(40),
+    rowversion integer,
+    change_action character(1),
+    change_user character varying(50),
+    change_time timestamp without time zone,
+    change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.minister_application_historic OWNER TO postgres;
+
+--
+-- Name: minister_inward; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE minister_inward (
+    id character varying(40) NOT NULL,
+    service_id character varying(40),
+    subject text,
+    date_in timestamp without time zone,
+    file_number character varying(40),
+    date_out timestamp without time zone,
+    directed_division character varying(80),
+    directed_officer character varying(40),
+    ceo_direction character varying(250),
+    minister_direction character varying(250),
+    from_whom character varying(250),
+    remark character varying(250),
+    comment text,
+    rowidentifier character varying(40) DEFAULT public.uuid_generate_v1() NOT NULL,
+    rowversion integer DEFAULT 0 NOT NULL,
+    change_action character(1) DEFAULT 'i'::bpchar NOT NULL,
+    change_user character varying(50),
+    change_time timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.minister_inward OWNER TO postgres;
+
+--
+-- Name: TABLE minister_inward; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON TABLE minister_inward IS 'Contains data migrated from the Minister''s office secretary inward database as well as new inward records created via SOLA Tonga. 
+Tags: SOLA Tonga Extension, Change History';
+
+
+--
+-- Name: COLUMN minister_inward.id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.id IS 'Identifier for the inward record.';
+
+
+--
+-- Name: COLUMN minister_inward.service_id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.service_id IS 'Identifier for the service that created this inward record. NULL if the record was migrated from the Secretary''s inward database or was created without using a service';
+
+
+--
+-- Name: COLUMN minister_inward.subject; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.subject IS 'The subject of the inward';
+
+
+--
+-- Name: COLUMN minister_inward.date_in; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.date_in IS 'The date the inward was received at the Minister''s office';
+
+
+--
+-- Name: COLUMN minister_inward.file_number; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.file_number IS 'The file number of the application at the Minister''s office';
+
+
+--
+-- Name: COLUMN minister_inward.date_out; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.date_out IS 'The date the application was sent from the Minister''s office';
+
+
+--
+-- Name: COLUMN minister_inward.directed_division; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.directed_division IS 'Ministry division the application was sent to';
+
+
+--
+-- Name: COLUMN minister_inward.directed_officer; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.directed_officer IS 'The Ministry staff who handled the application';
+
+
+--
+-- Name: COLUMN minister_inward.ceo_direction; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.ceo_direction IS 'Decision made by the CEO for the application';
+
+
+--
+-- Name: COLUMN minister_inward.minister_direction; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.minister_direction IS 'Decision made by the Minister of Lands for the application';
+
+
+--
+-- Name: COLUMN minister_inward.from_whom; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.from_whom IS 'The name of the applicant';
+
+
+--
+-- Name: COLUMN minister_inward.remark; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.remark IS 'Additional notes made for the application';
+
+
+--
+-- Name: COLUMN minister_inward.comment; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.comment IS 'General comments relating to the record';
+
+
+--
+-- Name: COLUMN minister_inward.rowidentifier; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.rowidentifier IS 'Identifies the all change records for the row in the inward_historic table';
+
+
+--
+-- Name: COLUMN minister_inward.rowversion; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.rowversion IS 'Sequential value indicating the number of times this row has been modified.';
+
+
+--
+-- Name: COLUMN minister_inward.change_action; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.change_action IS 'Indicates if the last data modification action that occurred to the row was insert (i), update (u) or delete (d).';
+
+
+--
+-- Name: COLUMN minister_inward.change_user; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.change_user IS 'The user id of the last person to modify the row.';
+
+
+--
+-- Name: COLUMN minister_inward.change_time; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_inward.change_time IS 'The date and time the row was last modified.';
+
+
+--
+-- Name: minister_inward_historic; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE minister_inward_historic (
+    id character varying(40),
+    service_id character varying(40),
+    subject text,
+    date_in timestamp without time zone,
+    file_number character varying(40),
+    date_out timestamp without time zone,
+    directed_division character varying(80),
+    directed_officer character varying(40),
+    ceo_direction character varying(250),
+    minister_direction character varying(250),
+    from_whom character varying(250),
+    remark character varying(250),
+    comment text,
+    rowidentifier character varying(40),
+    rowversion integer,
+    change_action character(1),
+    change_user character varying(50),
+    change_time timestamp without time zone,
+    change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.minister_inward_historic OWNER TO postgres;
+
+--
+-- Name: minister_lease; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE minister_lease (
+    id character varying(40) NOT NULL,
+    service_id character varying(40),
+    date_received timestamp without time zone,
+    name character varying(100),
+    purpose character varying(250),
+    location character varying(40),
+    noble character varying(80),
+    land_type character varying(40),
+    total_area character varying(40),
+    lease_area character varying(40),
+    rent character varying(20),
+    survey_fee character varying(20),
+    receipt_number character varying(40),
+    pay_date timestamp without time zone,
+    ceo_direction character varying(250),
+    directed_division character varying(250),
+    remark character varying(250),
+    comment text,
+    rowidentifier character varying(40) DEFAULT public.uuid_generate_v1() NOT NULL,
+    rowversion integer DEFAULT 0 NOT NULL,
+    change_action character(1) DEFAULT 'i'::bpchar NOT NULL,
+    change_user character varying(50),
+    change_time timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.minister_lease OWNER TO postgres;
+
+--
+-- Name: TABLE minister_lease; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON TABLE minister_lease IS 'Contains data migrated from the Minister''s office secretary inward database as well as new inward records created via SOLA Tonga. 
+Tags: SOLA Tonga Extension, Change History';
+
+
+--
+-- Name: COLUMN minister_lease.id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.id IS 'Identifier for the lease application';
+
+
+--
+-- Name: COLUMN minister_lease.service_id; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.service_id IS 'Identifier for the service that created this lease application. NULL if the record was migrated from the Secretary''s inward database ';
+
+
+--
+-- Name: COLUMN minister_lease.date_received; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.date_received IS 'The date received at the Minister''s Office';
+
+
+--
+-- Name: COLUMN minister_lease.name; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.name IS 'The name of the applicant';
+
+
+--
+-- Name: COLUMN minister_lease.purpose; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.purpose IS 'The purpose of the lease';
+
+
+--
+-- Name: COLUMN minister_lease.location; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.location IS 'The location of the land';
+
+
+--
+-- Name: COLUMN minister_lease.noble; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.noble IS 'The noble of the location';
+
+
+--
+-- Name: COLUMN minister_lease.land_type; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.land_type IS 'The land type (Town or Tax Allotment)';
+
+
+--
+-- Name: COLUMN minister_lease.total_area; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.total_area IS 'Total area of the registered land';
+
+
+--
+-- Name: COLUMN minister_lease.lease_area; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.lease_area IS 'Total area required for lease';
+
+
+--
+-- Name: COLUMN minister_lease.rent; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.rent IS 'Rent amount for the lease area';
+
+
+--
+-- Name: COLUMN minister_lease.survey_fee; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.survey_fee IS 'Survey fee that was paid';
+
+
+--
+-- Name: COLUMN minister_lease.receipt_number; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.receipt_number IS 'Receipt number for the survey fee';
+
+
+--
+-- Name: COLUMN minister_lease.pay_date; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.pay_date IS 'The date survey fee payment was made';
+
+
+--
+-- Name: COLUMN minister_lease.ceo_direction; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.ceo_direction IS 'Decision made by the CEO for the application';
+
+
+--
+-- Name: COLUMN minister_lease.directed_division; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.directed_division IS 'Division where the application is sent';
+
+
+--
+-- Name: COLUMN minister_lease.remark; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.remark IS 'Additional notes made for the lease';
+
+
+--
+-- Name: COLUMN minister_lease.comment; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.comment IS 'General comments relating to the record';
+
+
+--
+-- Name: COLUMN minister_lease.rowidentifier; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.rowidentifier IS 'Identifies the all change records for the row in the minister_lease_historic table';
+
+
+--
+-- Name: COLUMN minister_lease.rowversion; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.rowversion IS 'Sequential value indicating the number of times this row has been modified.';
+
+
+--
+-- Name: COLUMN minister_lease.change_action; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.change_action IS 'Indicates if the last data modification action that occurred to the row was insert (i), update (u) or delete (d).';
+
+
+--
+-- Name: COLUMN minister_lease.change_user; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.change_user IS 'The user id of the last person to modify the row.';
+
+
+--
+-- Name: COLUMN minister_lease.change_time; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.change_time IS 'The date and time the row was last modified.';
+
+
+--
+-- Name: minister_lease_historic; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE minister_lease_historic (
+    id character varying(40),
+    service_id character varying(40),
+    date_received timestamp without time zone,
+    name character varying(100),
+    purpose character varying(250),
+    location character varying(40),
+    noble character varying(80),
+    land_type character varying(40),
+    total_area character varying(40),
+    lease_area character varying(40),
+    rent character varying(20),
+    survey_fee character varying(20),
+    receipt_number character varying(40),
+    pay_date timestamp without time zone,
+    ceo_direction character varying(250),
+    directed_division character varying(250),
+    remark character varying(250),
+    comment text,
+    rowidentifier character varying(40),
+    rowversion integer,
+    change_action character(1),
+    change_user character varying(50),
+    change_time timestamp without time zone,
+    change_time_valid_until timestamp without time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE application.minister_lease_historic OWNER TO postgres;
+
+--
 -- Name: request_category_type; Type: TABLE; Schema: application; Owner: postgres; Tablespace: 
 --
 
@@ -13753,6 +14398,30 @@ ALTER TABLE ONLY drafting
 
 
 --
+-- Name: minister_application_pkey; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY minister_application
+    ADD CONSTRAINT minister_application_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: minister_inward_pkey; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY minister_inward
+    ADD CONSTRAINT minister_inward_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: minister_lease_pkey; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY minister_lease
+    ADD CONSTRAINT minister_lease_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: request_category_type_display_value_unique; Type: CONSTRAINT; Schema: application; Owner: postgres; Tablespace: 
 --
 
@@ -15417,6 +16086,48 @@ CREATE INDEX drafting_service_id_idx ON drafting USING btree (service_id);
 
 
 --
+-- Name: minister_application_index_on_rowidentifier; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX minister_application_index_on_rowidentifier ON minister_application USING btree (rowidentifier);
+
+
+--
+-- Name: minister_application_service_id_idx; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX minister_application_service_id_idx ON minister_application USING btree (service_id);
+
+
+--
+-- Name: minister_inward_index_on_rowidentifier; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX minister_inward_index_on_rowidentifier ON minister_inward USING btree (rowidentifier);
+
+
+--
+-- Name: minister_inward_service_id_idx; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX minister_inward_service_id_idx ON minister_inward USING btree (service_id);
+
+
+--
+-- Name: minister_lease_index_on_rowidentifier; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX minister_lease_index_on_rowidentifier ON minister_lease USING btree (rowidentifier);
+
+
+--
+-- Name: minister_lease_service_id_idx; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX minister_lease_service_id_idx ON minister_lease USING btree (service_id);
+
+
+--
 -- Name: request_type_request_category_code_fk20_ind; Type: INDEX; Schema: application; Owner: postgres; Tablespace: 
 --
 
@@ -16823,6 +17534,27 @@ CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON drafting FOR EACH ROW 
 
 
 --
+-- Name: __track_changes; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_inward FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
+
+
+--
+-- Name: __track_changes; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_application FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
+
+
+--
+-- Name: __track_changes; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_lease FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
+
+
+--
 -- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
 --
 
@@ -16869,6 +17601,27 @@ CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON service_checklist_item 
 --
 
 CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON drafting FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
+
+
+--
+-- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_inward FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
+
+
+--
+-- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_application FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
+
+
+--
+-- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
+--
+
+CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_lease FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
 
 
 SET search_path = bulk_operation, pg_catalog;
@@ -17718,6 +18471,30 @@ ALTER TABLE ONLY checklist_item_in_group
 
 ALTER TABLE ONLY drafting
     ADD CONSTRAINT drafting_service_id_fkey FOREIGN KEY (service_id) REFERENCES service(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- Name: minister_application_service_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: postgres
+--
+
+ALTER TABLE ONLY minister_application
+    ADD CONSTRAINT minister_application_service_id_fkey FOREIGN KEY (service_id) REFERENCES service(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- Name: minister_inward_service_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: postgres
+--
+
+ALTER TABLE ONLY minister_inward
+    ADD CONSTRAINT minister_inward_service_id_fkey FOREIGN KEY (service_id) REFERENCES service(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- Name: minister_lease_service_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: postgres
+--
+
+ALTER TABLE ONLY minister_lease
+    ADD CONSTRAINT minister_lease_service_id_fkey FOREIGN KEY (service_id) REFERENCES service(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
 --
