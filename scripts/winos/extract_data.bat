@@ -122,6 +122,8 @@ echo ### Dumping application tables... >> %EXTRACT_LOG% 2>&1
 	-t application.application -t application.application_property ^
 	-t application.service -t application.application_spatial_unit ^
 	-t application.service_checklist_item -t application.drafting ^
+	-t application.minister_application -t application.minister_inward ^
+	-t application.minister_lease ^
     -f "%data_path%08_application.sql" %db_name% >> %EXTRACT_LOG% 2>&1	
 	
 echo Dumping bulk operation tables...

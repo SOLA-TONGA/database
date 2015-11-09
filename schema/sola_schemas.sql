@@ -7063,14 +7063,14 @@ CREATE TABLE minister_application_historic (
     date_received timestamp without time zone,
     name character varying(100),
     location character varying(40),
-    noble character varying(80),
     land_type character varying(40),
-    reg_date timestamp without time zone,
+    noble character varying(80),
     land_area character varying(80),
     sign_date timestamp without time zone,
     survey_fee character varying(20),
     receipt_number character varying(40),
     pay_date timestamp without time zone,
+    last_reg character varying(250),
     ceo_direction character varying(250),
     directed_division character varying(250),
     comment text,
@@ -7291,6 +7291,7 @@ CREATE TABLE minister_lease (
     land_type character varying(40),
     total_area character varying(40),
     lease_area character varying(40),
+    term character varying(40),
     rent character varying(20),
     survey_fee character varying(20),
     receipt_number character varying(40),
@@ -7385,6 +7386,13 @@ COMMENT ON COLUMN minister_lease.total_area IS 'Total area of the registered lan
 --
 
 COMMENT ON COLUMN minister_lease.lease_area IS 'Total area required for lease';
+
+
+--
+-- Name: COLUMN minister_lease.term; Type: COMMENT; Schema: application; Owner: postgres
+--
+
+COMMENT ON COLUMN minister_lease.term IS 'Term of the lease in years';
 
 
 --
@@ -7493,6 +7501,7 @@ CREATE TABLE minister_lease_historic (
     land_type character varying(40),
     total_area character varying(40),
     lease_area character varying(40),
+    term character varying(40),
     rent character varying(20),
     survey_fee character varying(20),
     receipt_number character varying(40),
@@ -17544,14 +17553,14 @@ CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_inward FOR EA
 -- Name: __track_changes; Type: TRIGGER; Schema: application; Owner: postgres
 --
 
-CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_application FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
+CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_lease FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
 
 
 --
 -- Name: __track_changes; Type: TRIGGER; Schema: application; Owner: postgres
 --
 
-CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_lease FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
+CREATE TRIGGER __track_changes BEFORE INSERT OR UPDATE ON minister_application FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_changes();
 
 
 --
@@ -17614,14 +17623,14 @@ CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_inward FOR EAC
 -- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
 --
 
-CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_application FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
+CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_lease FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
 
 
 --
 -- Name: __track_history; Type: TRIGGER; Schema: application; Owner: postgres
 --
 
-CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_lease FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
+CREATE TRIGGER __track_history AFTER DELETE OR UPDATE ON minister_application FOR EACH ROW EXECUTE PROCEDURE public.f_for_trg_track_history();
 
 
 SET search_path = bulk_operation, pg_catalog;
