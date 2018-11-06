@@ -2,11 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 SET search_path = administrative, pg_catalog;
 
@@ -290,8 +295,6 @@ ALTER TABLE type_action ENABLE TRIGGER ALL;
 
 ALTER TABLE request_type DISABLE TRIGGER ALL;
 
-INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('cadastreChange', 'registrationServices', 'Change to Cadastre::::Cambio del Catasto', NULL, 'x', 30, 25.00, 0.10, 0.00, 1, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('redefineCadastre', 'registrationServices', 'Redefine Cadastre::::Redefinizione catasto', NULL, 'x', 30, 25.00, 0.10, 0.00, 1, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('documentCopy', 'informationServices', 'Document Copy::::Copia Documento', NULL, 'x', 1, 0.50, 0.00, 0.00, 0, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('newFreehold', 'registrationServices', 'New Freehold Title::::Nuovo Titolo', NULL, 'x', 5, 5.00, 0.00, 0.00, 1, 'Fee Simple Estate', NULL, NULL, NULL, NULL);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('serviceEnquiry', 'informationServices', 'Service Enquiry::::Richiesta Servizio', NULL, 'x', 1, 0.00, 0.00, 0.00, 0, NULL, NULL, NULL, NULL, NULL);
@@ -380,6 +383,8 @@ INSERT INTO request_type (code, request_category_code, display_value, descriptio
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('correctRegistry', 'registrationServices', 'Correct Registry::::TONGAN', 'Allows corrections to the registered information to be made.', 'c', 1, 2.00, 0.00, 0.00, 0, 'Registry Correction', NULL, NULL, 'Corrections', 600);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('correctRegistryRem', 'registrationServices', 'Correct Registry (Remove Right)::::TONGAN', 'Allows corrections to the registered information to be made by removing rights.', 'c', 1, 2.00, 0.00, 0.00, 0, 'Registry Correction', NULL, 'cancel', 'Corrections', 605);
 INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('drafting', 'applicationServices', 'Drafting::::TONGAN', 'Service to allow capture of details relevant for Drafting', 'c', 5, 0.00, 0.00, 0.00, 0, NULL, NULL, NULL, 'Workflow', 33);
+INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('cadastreChange', 'registrationServices', 'Change to Cadastre::::Cambio del Catasto', NULL, 'c', 30, 25.00, 0.10, 0.00, 1, NULL, NULL, NULL, 'Cadastral', 700);
+INSERT INTO request_type (code, request_category_code, display_value, description, status, nr_days_to_complete, base_fee, area_base_fee, value_base_fee, nr_properties_required, notation_template, rrr_type_code, type_action_code, display_group_name, display_order) VALUES ('redefineCadastre', 'registrationServices', 'Redefine Cadastre::::Redefinizione catasto', NULL, 'c', 30, 25.00, 0.10, 0.00, 1, NULL, NULL, NULL, 'Cadastral', 705);
 
 
 ALTER TABLE request_type ENABLE TRIGGER ALL;
@@ -902,6 +907,8 @@ INSERT INTO approle (code, display_value, status, description) VALUES ('Drafting
 INSERT INTO approle (code, display_value, status, description) VALUES ('DraftingRemove', 'Drafting - Drafting Remove', 'c', 'Allows users to remove items from the migrated drafting database.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('MinisterEdit', 'Minister - Edit', 'c', 'Allows users to add and modify items in the ministers database.');
 INSERT INTO approle (code, display_value, status, description) VALUES ('MinisterSearch', 'Minister - Search', 'c', 'Allows users to search for items from the migrated minister database.');
+INSERT INTO approle (code, display_value, status, description) VALUES ('cadastreChange', 'Service - Change to Cadastre', 'c', 'Registration Service - Capture new cadastral surveys');
+INSERT INTO approle (code, display_value, status, description) VALUES ('redefineCadastre', 'Service - Redefine Cadastre', 'c', 'Registration Service - Modify existing cadastral parcels');
 
 
 ALTER TABLE approle ENABLE TRIGGER ALL;

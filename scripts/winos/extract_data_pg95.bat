@@ -16,7 +16,8 @@ REM default, the document table is skipped.
 REM
 REM Configure variables to use for script
 SET current_dir=%~dp0
-SET pg_dump="%current_dir%\bin\psql\pg_dump"
+REM SET pg_dump="%current_dir%bin\psql\pg_dump"
+SET pg_dump="C:\Program Files\PostgreSQL\9.5\bin\pg_dump.exe"
 SET data_path=%current_dir%..\..\data\
 SET zip_exe="%current_dir%bin\7z\7z.exe"
 SET EXTRACT_LOG="%current_dir%data.log"

@@ -2,11 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 SET search_path = system, pg_catalog;
 
@@ -29,6 +34,7 @@ INSERT INTO appgroup (id, name, description) VALUES ('csr-id', 'Customer Service
 INSERT INTO appgroup (id, name, description) VALUES ('protected-id', 'View Protected Fields', 'This group allows selected users to view protected fields ush as the mortgage amount.');
 INSERT INTO appgroup (id, name, description) VALUES ('drafting-remove-id', 'Drafting Remove', 'This group allows drafting staff to remove drafting items from the database');
 INSERT INTO appgroup (id, name, description) VALUES ('aef01007-5f5c-4341-b864-49faaf410df3', 'Minister', 'Allows access to search and edit the minister database. ');
+INSERT INTO appgroup (id, name, description) VALUES ('cadastre-id', 'Cadastral', 'This is a group of users that have the right to process Cadstral Change and Redefined Cadastre services.');
 
 
 ALTER TABLE appgroup ENABLE TRIGGER ALL;
@@ -192,6 +198,12 @@ INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversi
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('DraftingRemove', 'drafting-remove-id', '7b54b382-6314-11e5-8b81-f358d498291a', 1, 'i', 'db:postgres', '2015-09-25 11:32:12.43');
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('MinisterEdit', 'aef01007-5f5c-4341-b864-49faaf410df3', '70eab9c9-edd1-4afb-9ec2-7cbaefe1e1bd', 1, 'i', 'andrew', '2015-09-25 11:37:38.034');
 INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('MinisterSearch', 'aef01007-5f5c-4341-b864-49faaf410df3', '828e772d-7f46-4106-9310-922fa2d527f6', 1, 'i', 'andrew', '2015-09-25 11:37:38.034');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('cadastreChange', 'cadastre-id', '9f74978c-e160-11e8-a02e-db78ef2f9a55', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('redefineCadastre', 'cadastre-id', '9f85af7c-e160-11e8-a02f-b7d15e7d5ff1', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('StartService', 'cadastre-id', '9f85fdb0-e160-11e8-a030-eb8148791cd6', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('CompleteService', 'cadastre-id', '9f8624b6-e160-11e8-a031-af668a0ca6df', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('CancelService', 'cadastre-id', '9f864bbc-e160-11e8-a032-4f52aa67eff1', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO approle_appgroup (approle_code, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('RevertService', 'cadastre-id', '9f8672e0-e160-11e8-a033-f7afba11c35c', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
 
 
 ALTER TABLE approle_appgroup ENABLE TRIGGER ALL;
@@ -259,6 +271,9 @@ INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion
 INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('03dcb308-443e-42ad-bddc-3d3a8092f87e', 'drafting-remove-id', '7d222744-6314-11e5-8e0c-d7b8b6dc18c7', 1, 'i', 'db:postgres', '2015-09-25 11:32:15.453');
 INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('03dcb308-443e-42ad-bddc-3d3a8092f87e', 'aef01007-5f5c-4341-b864-49faaf410df3', '901b9c23-08a5-46cd-b24e-09a6797996cf', 1, 'i', 'andrew', '2015-09-25 11:37:51.149');
 INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('24e16f88-9769-40aa-aedb-b8ff34bfed07', 'aef01007-5f5c-4341-b864-49faaf410df3', '49f53c7c-05be-40df-8b4b-52e1cf827e32', 1, 'i', 'andrew', '2015-09-25 11:37:59.161');
+INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('03dcb308-443e-42ad-bddc-3d3a8092f87e', 'cadastre-id', '9f8decbe-e160-11e8-a034-ef962f3d90a4', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('6669d58c-daca-4b2e-a9f3-272481be5d7e', 'cadastre-id', '9f8e13ce-e160-11e8-a035-2f514e2d7c36', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
+INSERT INTO appuser_appgroup (appuser_id, appgroup_id, rowidentifier, rowversion, change_action, change_user, change_time) VALUES ('24e16f88-9769-40aa-aedb-b8ff34bfed07', 'cadastre-id', '9f8e3ad4-e160-11e8-a036-7f1829f98892', 1, 'i', 'db:postgres', '2018-11-06 14:09:33.961088');
 
 
 ALTER TABLE appuser_appgroup ENABLE TRIGGER ALL;

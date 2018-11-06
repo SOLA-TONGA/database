@@ -2,11 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 SET search_path = system, pg_catalog;
 
@@ -918,8 +923,6 @@ INSERT INTO br_validation (id, br_id, target_code, target_application_moment, ta
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1e9bcd72-9eb4-11e3-bb03-4751a3590b62', 'application-approve-cancel-old-titles', 'application', 'approve', NULL, NULL, NULL, NULL, 'critical', 250);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1e9c90c2-9eb4-11e3-808d-039bedff69d0', 'cancel-title-check-rrr-cancelled', 'application', 'validate', NULL, NULL, NULL, NULL, 'critical', 150);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1e9d5412-9eb4-11e3-a6fd-3f14ce33dc21', 'app-check-title-ref', 'application', 'validate', NULL, NULL, NULL, NULL, 'medium', 750);
-INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eab8514-9eb4-11e3-b29f-3b43bdb0ae3b', 'application-baunit-has-parcels', 'service', NULL, 'complete', NULL, 'cadastreChange', NULL, 'critical', 130);
-INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eacbd9e-9eb4-11e3-abcb-3b415835fed8', 'application-baunit-has-parcels', 'service', NULL, 'complete', NULL, 'redefineCadastre', NULL, 'critical', 140);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eada7fe-9eb4-11e3-92e1-975229568b3c', 'service-on-complete-without-transaction', 'service', NULL, 'complete', NULL, NULL, NULL, 'critical', 360);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eae9268-9eb4-11e3-9ba8-7324727bc81f', 'service-check-no-previous-digital-title-service', 'service', NULL, 'complete', NULL, 'newDigitalTitle', NULL, 'warning', 720);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eafa3d8-9eb4-11e3-93da-e3a082e08b51', 'baunit-has-multiple-mortgages', 'service', NULL, 'complete', NULL, 'mortgage', NULL, 'warning', 670);
@@ -972,6 +975,8 @@ INSERT INTO br_validation (id, br_id, target_code, target_application_moment, ta
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1f0e6706-9eb4-11e3-8b9c-e7778164d964', 'rrr-has-pending', 'rrr', NULL, NULL, 'current', NULL, NULL, 'critical', 290);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1f1df7a2-9eb4-11e3-9457-ff0a4114453b', 'source-attach-in-transaction-no-pendings', 'source', NULL, NULL, 'pending', NULL, NULL, 'critical', 220);
 INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1f1f7e4c-9eb4-11e3-910b-fb01a10f4544', 'source-attach-in-transaction-allowed-type', 'source', NULL, NULL, 'pending', NULL, NULL, 'critical', 560);
+INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eab8514-9eb4-11e3-b29f-3b43bdb0ae3b', 'application-baunit-has-parcels', 'service', NULL, 'complete', NULL, 'cadastreChange', NULL, 'warning', 130);
+INSERT INTO br_validation (id, br_id, target_code, target_application_moment, target_service_moment, target_reg_moment, target_request_type_code, target_rrr_type_code, severity_code, order_of_execution) VALUES ('1eacbd9e-9eb4-11e3-abcb-3b415835fed8', 'application-baunit-has-parcels', 'service', NULL, 'complete', NULL, 'redefineCadastre', NULL, 'warning', 140);
 
 
 ALTER TABLE br_validation ENABLE TRIGGER ALL;
